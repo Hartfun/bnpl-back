@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bnpl-ml-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free                      # upgrade to starter for persistent disk
+    envVars:
+      - key: PORT
+        value: 5000
+    healthCheckPath: /api/health
+    autoDeploy: true
