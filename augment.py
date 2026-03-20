@@ -185,52 +185,57 @@ FEARS = [
 
 # Non-user opinions about BNPL (they have general opinions even without using it)
 NON_USER_OPINIONS_NEUTRAL = [
-    "I have not used BNPL but I think it could be helpful if used responsibly.",
-    "From what I have heard these services seem convenient but risky for students.",
-    "I am not sure about BNPL — I would need more information before forming an opinion.",
-    "It seems like a useful concept but I prefer to avoid credit for now.",
-    "I think BNPL is interesting but I am not ready to try it yet.",
-    "These services seem designed for impulse buying which I try to avoid.",
-    "I have no personal experience but my peers seem to find it useful.",
-    "The concept seems fine but I worry about the terms and conditions.",
-    "I think it could work for planned purchases but not for everyday spending.",
-    "I remain neutral about BNPL until I understand the full cost structure.",
-    "It seems convenient but I value the discipline of paying upfront.",
-    "I have read about both good and bad experiences so I am on the fence.",
-    "The marketing makes it seem great but I suspect there are hidden catches.",
-    "I prefer to save up first rather than commit to future repayments.",
-    "BNPL seems like a modern credit tool but I am not confident using it.",
+    "I have not used BNPL yet but I understand it allows payment in instalments.",
+    "These services appear to be a form of short-term credit for purchases.",
+    "I have no personal experience with BNPL so I have no strong opinion either way.",
+    "From what I understand BNPL splits the cost of a purchase over time.",
+    "I am aware of services like Slice and LazyPay but have not tried them.",
+    "My peers mention using BNPL occasionally for larger purchases.",
+    "I understand the basic concept of buying now and paying in instalments.",
+    "I have seen BNPL options at checkout but have not selected them so far.",
+    "These services seem to be growing in popularity among students my age.",
+    "I would consider trying BNPL if I needed to make a large planned purchase.",
+    "I understand these platforms offer short repayment windows without interest.",
+    "I am familiar with EMI options from online shopping platforms.",
+    "I have not formed a strong view on BNPL as I have not needed it yet.",
+    "These services seem to serve a purpose for students who prefer instalment payments.",
+    "I am open to learning more about BNPL before deciding whether to use it.",
+    "I know classmates who use these services for electronics and course materials.",
+    "The concept of deferred payment is straightforward and I understand how it works.",
+    "I have not used BNPL but I do not have strong objections to the concept.",
+    "These services are available on most major shopping platforms I use.",
+    "I prefer to pay upfront when possible but I understand why others use BNPL.",
 ]
 
 NON_USER_OPINIONS_NEGATIVE = [
-    "I strongly believe BNPL services encourage students to overspend recklessly.",
-    "These services are dangerous for students who do not have financial literacy.",
-    "I avoid BNPL because I do not want to start my adult life in debt.",
-    "The hidden fees make BNPL a terrible deal for financially struggling students.",
-    "I think these platforms profit from students who cannot manage money well.",
-    "BNPL is just a trap disguised as a convenience feature.",
-    "I refuse to use credit services because debt causes too much anxiety.",
-    "These services normalise borrowing among students who should be saving.",
-    "I have seen friends struggle with BNPL debt and I want no part of it.",
-    "The repayment pressure is not worth the convenience of buying early.",
+    "I have chosen not to use BNPL because I prefer to avoid credit commitments.",
+    "I do not use these services as I am not comfortable with deferred payments.",
+    "I have decided to avoid BNPL until I have a stable source of income.",
+    "I prefer not to use BNPL as I have not needed it for any purchase so far.",
+    "I have not used BNPL because I am not familiar enough with how it works.",
+    "I tend to avoid financial products I do not fully understand yet.",
+    "I have not used these services as my current expenses are manageable.",
+    "I prefer traditional payment methods and have not explored BNPL options.",
+    "I am cautious about credit products and have not signed up for any yet.",
+    "I have not used BNPL as I have not made any purchases that required it.",
 ]
 
 NON_USER_FEARS = [
-    "My biggest concern is getting into debt I cannot repay on a student budget.",
-    "I fear losing my financial discipline if I start using credit services.",
-    "The hidden charges and late fees worry me more than the convenience helps.",
-    "I am afraid of damaging my credit score before I even start working.",
-    "The idea of owing money to a fintech app makes me very uncomfortable.",
-    "I worry that I would lose track of repayments and face penalties.",
-    "My fear is that BNPL would make me spend money I do not actually have.",
-    "I am concerned about data privacy when linking my bank to these apps.",
-    "The thought of collection calls over a missed payment is very stressful.",
-    "I fear developing a spending habit that I cannot sustain long term.",
-    "My concern is that one bad month could spiral into long-term debt.",
-    "I worry about the psychological pressure of having pending repayments.",
-    "The risk of overspending on things I do not really need is my main fear.",
-    "I am afraid these services will make impulsive buying feel too easy.",
-    "My biggest fear is not understanding the full cost until it is too late.",
+    "I would want to understand all fees and charges before committing to a plan.",
+    "I would need to review the repayment schedule carefully before signing up.",
+    "My main consideration would be whether I can meet the repayment deadlines.",
+    "I would want to check the terms and conditions thoroughly before using it.",
+    "I would need to ensure the service is from a verified and regulated provider.",
+    "I would want to confirm there are no additional charges beyond the purchase price.",
+    "My consideration is whether the repayment period aligns with my income schedule.",
+    "I would want to understand how missed payments are handled before enrolling.",
+    "I would check whether the service reports to credit bureaus before using it.",
+    "I would want to read user reviews and verify the platform is trustworthy.",
+    "My main question is whether the zero-interest period applies to my purchase.",
+    "I would want to know the process for disputing incorrect charges.",
+    "I would check whether auto-debit is required and if I can control the schedule.",
+    "I would want clarity on whether early repayment incurs any additional charges.",
+    "My consideration is whether the app secures my financial data adequately.",
 ]
 
 NON_USER_REASONS = [
@@ -326,7 +331,7 @@ def make_non_user_row():
 
     # KEY FIX: non-users also get opinion + fear text so they survive text filter
     # Mix: 60% neutral opinion, 30% negative, 10% positive (curious non-users)
-    sentiment = random.choices(["neutral","negative","positive"], weights=[0.60,0.30,0.10])[0]
+    sentiment = random.choices(["neutral","negative","positive"], weights=[0.80,0.15,0.05])[0]
     if sentiment == "neutral":
         opinion = pick(NON_USER_OPINIONS_NEUTRAL)
         overall = "Neutral"
