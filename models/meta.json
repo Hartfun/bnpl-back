@@ -15,46 +15,46 @@
     "Scholarship / Stipend"
   ],
   "stats": {
-    "total": 509,
-    "users": 114,
-    "non_users": 395,
+    "total": 1605,
+    "users": 514,
+    "non_users": 1091,
     "sentiment": {
-      "positive": 75,
-      "neutral": 399,
-      "negative": 35
+      "positive": 349,
+      "neutral": 444,
+      "negative": 812
     },
     "models": {
-      "lr_accuracy": 0.951,
-      "rf_accuracy": 0.98,
-      "gb_accuracy": 0.941
+      "lr_accuracy": 0.888,
+      "rf_accuracy": 0.922,
+      "gb_accuracy": 0.938
     },
     "clusters": [
       {
         "id": 1,
-        "size": 278,
-        "adoption_rate": 10.8,
-        "avg_sentiment": -0.035
+        "size": 940,
+        "adoption_rate": 32.6,
+        "avg_sentiment": -0.148
       },
       {
         "id": 2,
-        "size": 62,
-        "adoption_rate": 100.0,
-        "avg_sentiment": 0.704
+        "size": 154,
+        "adoption_rate": 35.1,
+        "avg_sentiment": -0.14
       },
       {
         "id": 3,
-        "size": 169,
-        "adoption_rate": 13.0,
-        "avg_sentiment": -0.014
+        "size": 511,
+        "adoption_rate": 30.1,
+        "avg_sentiment": -0.177
       }
     ],
     "field_distribution": {
-      "Engineering / Technology": 188,
-      "Science": 117,
-      "Commerce / Management": 114,
-      "Other": 59,
-      "Arts / Humanities": 27,
-      "Medicine / Pharmacy": 4
+      "Engineering / Technology": 579,
+      "Science": 409,
+      "Commerce / Management": 337,
+      "Other": 148,
+      "Arts / Humanities": 117,
+      "Medicine / Pharmacy": 15
     }
   }
 }
