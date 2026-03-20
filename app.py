@@ -34,6 +34,7 @@ tfidf  = load("tfidf.pkl")
 rf     = load("rf_adoption.pkl")
 le_field = load("le_field.pkl")
 le_funds = load("le_funds.pkl")
+le_year  = load("le_year.pkl")
 scaler = load("scaler.pkl")
 kmeans = load("kmeans.pkl")
 gb     = load("gb_sentiment.pkl")
@@ -90,13 +91,19 @@ def predict():
     lr_proba   = lr.predict_proba(v1)[0].tolist()
     lr_classes = lr.classes_.tolist()
 
-    # Model 2 — RF adoption
+    # Model 2 — RF adoption (7 features matching train.py)
     try:    fe = int(le_field.transform([field])[0])
     except: fe = 0
     try:    fu = int(le_funds.transform([fund])[0])
     except: fu = 0
+    try:    fy = int(le_year.transform([data.get("year","")])[0])
+    except: fy = 0
 
-    feat_row   = np.array([[compound, fe, fu]])
+    is_pos     = 1 if compound >= 0.05 else 0
+    is_neg     = 1 if compound <= -0.05 else 0
+    abs_sent   = abs(compound)
+
+    feat_row   = np.array([[compound, is_pos, is_neg, abs_sent, fe, fu, fy]])
     adopt_prob = float(rf.predict_proba(feat_row)[0][1])
     adopt_lbl  = "User" if adopt_prob >= 0.5 else "Non-User"
 

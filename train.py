@@ -29,6 +29,9 @@ from sklearn.preprocessing  import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics        import accuracy_score
 
+import os
+os.environ["LOKY_MAX_CPU_COUNT"] = "1"
+
 stop_words = set(stopwords.words("english"))
 lemmatizer = WordNetLemmatizer()
 sid        = SentimentIntensityAnalyzer()
@@ -95,17 +98,26 @@ print(f"   ✓ LR accuracy: {lr_acc:.3f}")
 print("🌲 Training Random Forest...")
 le_field = LabelEncoder()
 le_funds = LabelEncoder()
+le_year  = LabelEncoder()
 df["field_encoded"] = le_field.fit_transform(df["What is your field of study?"])
 df["funds_encoded"] = le_funds.fit_transform(df["What is your primary source of funds for personal expenses?"])
+df["year_encoded"]  = le_year.fit_transform(df["What is your current year of study?"].fillna("Other"))
 
-feat     = ["compound_score", "field_encoded", "funds_encoded"]
+# Sentiment polarity flags — strong signal for user vs non-user
+df["is_positive"]   = (df["compound_score"] >= 0.05).astype(int)
+df["is_negative"]   = (df["compound_score"] <= -0.05).astype(int)
+df["abs_sentiment"] = df["compound_score"].abs()
+
+feat     = ["compound_score", "is_positive", "is_negative", "abs_sentiment",
+            "field_encoded", "funds_encoded", "year_encoded"]
 X_ad     = df[feat].fillna(0)
 y_ad     = (df["user_type"] == "User").astype(int)
 X_ad_tr, X_ad_te, y_ad_tr, y_ad_te = train_test_split(X_ad, y_ad, test_size=0.2, random_state=42, stratify=y_ad)
-rf       = RandomForestClassifier(n_estimators=100, random_state=42, max_depth=10, class_weight="balanced")
+rf       = RandomForestClassifier(n_estimators=200, random_state=42, max_depth=12, class_weight="balanced")
 rf.fit(X_ad_tr, y_ad_tr)
 rf_acc   = accuracy_score(y_ad_te, rf.predict(X_ad_te))
 print(f"   ✓ RF accuracy: {rf_acc:.3f}")
+print(f"   Features: {feat}")
 
 # ── Model 3: KMeans (segmentation) ────────────────────────────────────────────
 print("📍 Training KMeans...")
@@ -136,6 +148,7 @@ artifacts = {
     "models/rf_adoption.pkl":      rf,
     "models/le_field.pkl":         le_field,
     "models/le_funds.pkl":         le_funds,
+    "models/le_year.pkl":          le_year,
     "models/scaler.pkl":           scaler,
     "models/kmeans.pkl":           kmeans,
     "models/gb_sentiment.pkl":     gb,
@@ -194,4 +207,3 @@ print(f"\n✅ All done! {len(df)} rows | LR={lr_acc:.3f} RF={rf_acc:.3f} GB={gb_
 print("   git add models/")
 print("   git commit -m 'feat: retrained models'")
 print("   git push")
-

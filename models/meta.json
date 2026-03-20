@@ -25,27 +25,27 @@
     },
     "models": {
       "lr_accuracy": 0.947,
-      "rf_accuracy": 0.86,
+      "rf_accuracy": 0.922,
       "gb_accuracy": 0.947
     },
     "clusters": [
       {
         "id": 1,
-        "size": 154,
-        "adoption_rate": 35.1,
-        "avg_sentiment": 0.115
+        "size": 695,
+        "adoption_rate": 43.7,
+        "avg_sentiment": 0.422
       },
       {
         "id": 2,
-        "size": 937,
-        "adoption_rate": 32.3,
-        "avg_sentiment": 0.09
+        "size": 549,
+        "adoption_rate": 2.7,
+        "avg_sentiment": 0.0
       },
       {
         "id": 3,
-        "size": 516,
-        "adoption_rate": 30.4,
-        "avg_sentiment": 0.051
+        "size": 363,
+        "adoption_rate": 53.7,
+        "avg_sentiment": -0.456
       }
     ],
     "field_distribution": {
