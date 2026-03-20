@@ -1,0 +1,60 @@
+{
+  "fields": [
+    "Arts / Humanities",
+    "Commerce / Management",
+    "Engineering / Technology",
+    "Medicine / Pharmacy",
+    "Other",
+    "Science"
+  ],
+  "funds": [
+    "Freelancing",
+    "Other",
+    "Parental Allowance",
+    "Part-time Job",
+    "Scholarship / Stipend"
+  ],
+  "stats": {
+    "total": 509,
+    "users": 114,
+    "non_users": 395,
+    "sentiment": {
+      "positive": 75,
+      "neutral": 399,
+      "negative": 35
+    },
+    "models": {
+      "lr_accuracy": 0.951,
+      "rf_accuracy": 0.98,
+      "gb_accuracy": 0.941
+    },
+    "clusters": [
+      {
+        "id": 1,
+        "size": 278,
+        "adoption_rate": 10.8,
+        "avg_sentiment": -0.035
+      },
+      {
+        "id": 2,
+        "size": 62,
+        "adoption_rate": 100.0,
+        "avg_sentiment": 0.704
+      },
+      {
+        "id": 3,
+        "size": 169,
+        "adoption_rate": 13.0,
+        "avg_sentiment": -0.014
+      }
+    ],
+    "field_distribution": {
+      "Engineering / Technology": 188,
+      "Science": 117,
+      "Commerce / Management": 114,
+      "Other": 59,
+      "Arts / Humanities": 27,
+      "Medicine / Pharmacy": 4
+    }
+  }
+}
